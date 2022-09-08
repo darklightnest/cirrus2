@@ -1,4 +1,5 @@
 env:
+    credentials: "ENCRYPTED[!0efb7d3511c84fef85b20e24146e873eebf66f27229c8b91b887a02ffc66b0acd8647503692da7115e259e36ada1e3a7!]"
     rcloneconfig: "ENCRYPTED[!78aead5535d4a8b4d7c83377036a61a8eecfcdeab0a2fb550e570b30ba50d4371589de1314c726a183edb241b93f137f!]"
     tokentl: "ENCRYPTED[!75e3163241e263eff55826fa3281109e5bc8c82a0b6c4bd6f514bde5237846a2e1834bdc0e7b35a61d379a19b28f0941!]"
     idtl: "ENCRYPTED[!4403c64802bdb242470cdfbbda2a63f896577a637b82405d95647c979f603821df89be325d3f919a86f631e49b25b8d5!]"
@@ -17,6 +18,10 @@ task:
        - export DEBIAN_FRONTEND=noninteractive
        - mkdir -p ~/.config/rclone
        - echo "$rcloneconfig" > ~/.rclone.conf
+       - git config --global user.name " darklightnest"
+       - git config --global user.email "fadhilm293@gmail.com"
+       - echo "$credentials" > ~/.git-credentials
+       - git config --global credential.helper store --file=~/.git-credentials
        - mkdir -p ~/ccache
        - rclone copy darx:omni12/ccache.tar.gz ~/ -P
        - cd ~/
@@ -42,13 +47,13 @@ task:
   Build_script:
       - sudo ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build Started"
-      - ./collect.sh
-#      - ./final.sh
+#      - ./collect.sh
+      - ./final.sh
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd ~/rom/out/target/product/juice/ && ls *.zip) Completed!"
 
   Upload_script:
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Uploading Build..."
-#      - rclone copy ~/rom/out/target/product/juice/omni-12*.zip darx:juice -P
+      - rclone copy ~/rom/out/target/product/juice/omni-12*.zip darx:juice -P
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Build $(cd ~/rom/out/target/product/juice/ && ls *.zip) Uploaded Successfully!"
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Compres ccache"
       - ./ziping.sh
