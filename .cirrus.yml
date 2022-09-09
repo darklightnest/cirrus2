@@ -18,10 +18,7 @@ task:
        - export DEBIAN_FRONTEND=noninteractive
        - mkdir -p ~/.config/rclone
        - echo "$rcloneconfig" > ~/.rclone.conf
-       - git config --global user.name " darklightnest"
-       - git config --global user.email "fadhilm293@gmail.com"
-       - echo "$credentials" > ~/.git-credentials
-       - git config --global credential.helper store --file=~/.git-credentials
+       - rm -rf ~/ccache
        - mkdir -p ~/ccache
        - rclone copy darx:omni12/ccache.tar.gz ~/ -P
        - cd ~/
