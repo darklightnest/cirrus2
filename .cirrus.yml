@@ -38,8 +38,16 @@ task:
       - cd ~/rom
       - rm -rf * .repo
       - repo init -q --no-repo-verify --depth=1 -u https://github.com/Spark-Rom/manifest -b fire -g default,-mips,-darwin,-notdefault
-      - git clone https://github.com/darklightnest/local_manifest --depth 1 -b spark11 .repo/local_manifests
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8 --fail-fast
+      # DT/VT/KT/TC
+      - git clone --depth=1 https://github.com/darknius20/devise --single-branch -b spark11 device/xiaomi/juice
+      - git clone --depth=1 https://gitlab.com/darknius20/android_vendor_xiaomi_juice --single-branch -b 11.0 vendor/xiaomi/juice
+      - git clone --depth=1 https://github.com/darknius20/jasjus --single-branch -b nimf kernel/xiaomi/juice
+      #FORK
+      - git clone --depth=1 https://github.com/darklightnest/platform_vendor_spark --single-branch -b fire vendor/spark
+      - git clone --depth=1 https://gitlab.com/darklightnest/frameworks_base-spark --single-branch -b omni frameworks/base
+      - git clone --depth=1 https://github.com/darklightnest/packages_apps_Fireworks --single-branch -b fire packages/apps/Fireworks
+      - git clone --depth=1 https://github.com/darklightnest/packages_apps_OmniSwitch --single-branch -b 11.0 packages/apps/OmniSwitch
       - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Sync Completed!"
 
   Build_script:
