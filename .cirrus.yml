@@ -35,7 +35,8 @@ task:
       - ./s.sh
   
   Sync_script:
-      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Start sync Source" 
+      - curl -s https://api.telegram.org/$tokentl/sendMessage -d chat_id=$idtl -d text="Start sync Source"
+      - rm -rf ~/rom
       - mkdir -p ~/rom
       - cd ~/rom
       - rm -rf * .repo
