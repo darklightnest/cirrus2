@@ -44,6 +44,9 @@ task:
       - git clone --depth=1 https://github.com/darknius20/android_vendor_xiaomi_juice --single-branch -b 11.0 vendor/xiaomi/juice
       - git clone --depth=1 https://github.com/darknius20/jasjus --single-branch -b nimf kernel/xiaomi/juice
       #FORK
+      - rm -rf vendor/spark
+      - rm -rf frameworks/base
+      - rm -rf packages/apps/Fireworks
       - git clone --depth=1 https://github.com/darklightnest/platform_vendor_spark --single-branch -b fire vendor/spark
       - git clone --depth=1 https://github.com/darklightnest/frameworks_base-spark --single-branch -b omni frameworks/base
       - git clone --depth=1 https://github.com/darklightnest/packages_apps_Fireworks --single-branch -b fire packages/apps/Fireworks
