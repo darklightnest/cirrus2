@@ -37,7 +37,7 @@ task:
       - mkdir -p ~/rom
       - cd ~/rom
       - rm -rf * .repo
-      - repo init -q --no-repo-verify --depth=1 -u https://github.com/darklightnest/manifest.git -b fire -g default,-mips,-darwin,-notdefault
+      - repo init -q --no-repo-verify --depth=1 -u https://github.com/Spark-Rom/manifest -b fire -g default,-mips,-darwin,-notdefault
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8 --fail-fast
       # DT/VT/KT/TC
       - git clone --depth=1 https://github.com/darknius20/devise --single-branch -b spark11 device/xiaomi/juice
