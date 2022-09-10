@@ -38,8 +38,7 @@ task:
       - cd ~/rom
       - rm -rf * .repo
       - repo init -q --no-repo-verify --depth=1 -u https://github.com/Spark-Rom/manifest -b fire -g default,-mips,-darwin,-notdefault
-      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8 --fail-fast
-      # DT/VT/KT/TC
+      - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
       - git clone --depth=1 https://github.com/darknius20/devise --single-branch -b spark11 device/xiaomi/juice
       - git clone --depth=1 https://github.com/darknius20/android_vendor_xiaomi_juice --single-branch -b 11.0 vendor/xiaomi/juice
       - git clone --depth=1 https://github.com/darknius20/jasjus --single-branch -b nimf kernel/xiaomi/juice
