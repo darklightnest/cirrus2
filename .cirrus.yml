@@ -4,7 +4,7 @@ env:
     tokentl: "ENCRYPTED[!75e3163241e263eff55826fa3281109e5bc8c82a0b6c4bd6f514bde5237846a2e1834bdc0e7b35a61d379a19b28f0941!]"
     idtl: "ENCRYPTED[!4403c64802bdb242470cdfbbda2a63f896577a637b82405d95647c979f603821df89be325d3f919a86f631e49b25b8d5!]"
     lunch : lunch octavi_juice-userdebug
-    make: brunch juice
+    make: mka octavi
  
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
